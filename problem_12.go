@@ -22,28 +22,48 @@ What is the value of the first triangle number to have over five hundred divisor
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+	"time"
+)
 
 func get_num_factors(sum int) int {
-	n_factor := 1
-	for i := 1; i <= sum/2; i++ {
+	n_factor := 0
+	sqrt := int(math.Sqrt(float64(sum)))
+	for i := 1; i <= sqrt; i++ {
 		if sum%i == 0 {
-			n_factor++
+			n_factor += 2
 		}
+	}
+	if sqrt*sqrt == sum {
+		n_factor--
 	}
 	return n_factor
 }
 
 func main() {
+	start := time.Now()
+
+	fmt.Println("")
+	fmt.Println("Problem 12: Highly divisible triangular number")
+	fmt.Println("")
+
 	n_factor_max := 500
 
 	n_factor := 0
 	n := 1
 	sum := 0
+
 	for n_factor < n_factor_max {
 		sum += n
 		n_factor = get_num_factors(sum)
 		n++
 	}
-	fmt.Println(sum, "", n_factor)
+	fmt.Println("Triangular number:", sum)
+	fmt.Println("#divisors:", n_factor)
+
+	elapsed := time.Since(start)
+	fmt.Println("Execution time", elapsed)
+	fmt.Println("")
 }

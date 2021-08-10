@@ -36,9 +36,16 @@ import (
 	"io/ioutil"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func main() {
+	start := time.Now()
+
+	fmt.Println("")
+	fmt.Println("Problem 11: Largest product in a grid")
+	fmt.Println("")
+
 	L := 20
 	N := 4
 	val := 1
@@ -101,5 +108,9 @@ func main() {
 			}
 		}
 	}
-	fmt.Println(val_max)
+	fmt.Println("Max value:", val_max)
+
+	elapsed := time.Since(start)
+	fmt.Println("Execution time", elapsed)
+	fmt.Println("")
 }

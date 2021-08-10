@@ -18,12 +18,24 @@ NOTE: Once the chain starts the terms are allowed to go above one million.
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
+	start := time.Now()
+
+	fmt.Println("")
+	fmt.Println("Problem 14: Longest Collatz sequence")
+	fmt.Println("")
+
 	len := 0
 	n_max := 1000000
 	n_len_max := 0
+
+	fmt.Println("Max starting point:", n_max)
+
 	for n0 := 2; n0 < n_max; n0++ {
 		n := n0
 		count := 1
@@ -40,5 +52,10 @@ func main() {
 			len = count
 		}
 	}
-	fmt.Println(n_len_max, len)
+	fmt.Println("Starting point:", n_len_max)
+	fmt.Println("Length:", len)
+
+	elapsed := time.Since(start)
+	fmt.Println("Execution time", elapsed)
+	fmt.Println("")
 }
