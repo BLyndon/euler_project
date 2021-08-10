@@ -11,6 +11,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"time"
 )
 
 func get_digit(num int, digit int) int {
@@ -41,8 +42,16 @@ func is_palin(n int) bool {
 }
 
 func main() {
+	start := time.Now()
+
+	fmt.Println("")
+	fmt.Println("Problem 4: Largest palindrome product")
+	fmt.Println("")
+
 	var I, J int
 	max_palin := 0
+
+	fmt.Println("Digits: 3")
 
 	for i := 100; i < 1000; i++ {
 		for j := i; j < 1000; j++ {
@@ -55,4 +64,8 @@ func main() {
 		}
 	}
 	fmt.Println(I, "x", J, "=", I*J)
+
+	elapsed := time.Since(start)
+	fmt.Println("Execution time", elapsed)
+	fmt.Println("")
 }

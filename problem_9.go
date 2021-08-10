@@ -15,15 +15,30 @@ package main
 import (
 	"fmt"
 	"math"
+	"time"
 )
 
 func main() {
+	start := time.Now()
+
+	fmt.Println("")
+	fmt.Println("Problem : Special Pythagorean triplet")
+	fmt.Println("")
+
+	val := 1000.0
+
+	fmt.Println("Value triplet:", val)
+
 	for a := 1; a < 1000; a++ {
 		for b := a + 1; b < 1000; b++ {
-			if float64(a+b)+math.Sqrt(float64(a*a+b*b)) == 1000 {
-				fmt.Println(float64(a*b) * math.Sqrt(float64(a*a+b*b)))
+			if float64(a+b)+math.Sqrt(float64(a*a+b*b)) == val {
+				fmt.Println("Product:", float64(a*b)*math.Sqrt(float64(a*a+b*b)))
 				break
 			}
 		}
 	}
+
+	elapsed := time.Since(start)
+	fmt.Println("Execution time", elapsed)
+	fmt.Println("")
 }

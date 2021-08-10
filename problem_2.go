@@ -10,15 +10,26 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
+	start := time.Now()
+
+	fmt.Println("")
+	fmt.Println("Problem 2: Even Fibunacci numbers")
+	fmt.Println("")
+
 	f_ := 0
 	f1 := 1
 	f2 := 2
 
 	fmax := 4000000
 	sum := 0
+
+	fmt.Println("Max value:", fmax)
 
 	for f2 < fmax {
 		if f2%2 == 0 {
@@ -30,5 +41,9 @@ func main() {
 		f2 = f_ + f2
 	}
 
-	fmt.Println(sum)
+	fmt.Println("The sum of the even-valued terms:", sum)
+
+	elapsed := time.Since(start)
+	fmt.Println("Execution time", elapsed)
+	fmt.Println("")
 }

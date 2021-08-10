@@ -8,7 +8,10 @@ What is the smallest positive number that is evenly divisible by all of the numb
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func check_div(n int, count int) bool {
 	for i := 1; i <= count; i++ {
@@ -22,12 +25,23 @@ func check_div(n int, count int) bool {
 }
 
 func main() {
+	start := time.Now()
+
+	fmt.Println("")
+	fmt.Println("Problem 5: Smallest multiple")
+	fmt.Println("")
+
 	count := 20
 	num := count
+
+	fmt.Println("Numbers 1 -", num)
 
 	for check_div(num, count) == false {
 		num += 1
 	}
-	fmt.Println(num)
+	fmt.Println("Smallest multiple:", num)
 
+	elapsed := time.Since(start)
+	fmt.Println("Execution time", elapsed)
+	fmt.Println("")
 }
