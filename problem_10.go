@@ -8,10 +8,15 @@ Find the sum of all the primes below two million.
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+	"time"
+)
 
 func is_prime(val int) bool {
-	for i := 2; i <= val/2; i++ {
+	sqrt := int(math.Sqrt(float64(val)))
+	for i := 2; i <= sqrt; i++ {
 		if val%i == 0 {
 			return false
 		}
@@ -20,6 +25,12 @@ func is_prime(val int) bool {
 }
 
 func main() {
+	start := time.Now()
+
+	fmt.Println("")
+	fmt.Println("Problem 10: Summation of primes")
+	fmt.Println("")
+
 	max := 2000000
 	sum := 0
 	for val := 2; val < max; val++ {
@@ -27,5 +38,9 @@ func main() {
 			sum += val
 		}
 	}
-	fmt.Println(sum)
+	fmt.Println("Sum:", sum)
+
+	elapsed := time.Since(start)
+	fmt.Println("Execution time", elapsed)
+	fmt.Println("")
 }
